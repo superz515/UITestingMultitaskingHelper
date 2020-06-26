@@ -95,6 +95,7 @@ extension XCUIApplication {
     ///
     /// Could be used to perform a swipe up from bottom edge.
     var bottomEdgeNormalizedOffset: CGVector {
+        // In practice, I found 0.999 works better than 0.99 or 1 since we need to make the touch point as close as possible to the edge but still leave some tiny distance to it.
         return CGVector(dx: 0.5, dy: 0.999)
     }
 
