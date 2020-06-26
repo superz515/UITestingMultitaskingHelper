@@ -11,9 +11,9 @@ After tons of searching, while most people say it is impossible to do so, I foun
 
 The basic idea is to mimic the user actions when we play multitasking with a real device manually. Luckily, there’re only 2 types of actions we need:
 
-Swipe: Obviously, first we need to bring up the dock from bottom edge through a swipe up gesture.
+* Swipe: Obviously, first we need to bring up the dock from bottom edge through a swipe up gesture.
 
-Drag: We need to drag another app to the right side of our app to begin multitasking. Also, we need to drag the grab handle between 2 apps to switch between different split screen modes.
+* Drag: We need to drag another app to the right side of our app to begin multitasking. Also, we need to drag the grab handle between 2 apps to switch between different split screen modes.
 
 Even better, swipe and drag are actually same kind of action. A swipe begins with a touch on the screen without staying while a drag needs to stay at initial touch point for a while, then they both move to another point. This can be done by a public API ```press(forDuration:thenDragTo:)``` of ```XCUICoordinate``` class provided by XCTest framework. All we need to do is to find 2 ```XCUICoordinate``` (a begin point and an end point of the drag) and a proper duration depending on if it is a swipe or a drag.
 
