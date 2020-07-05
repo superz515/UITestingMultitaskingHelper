@@ -153,7 +153,7 @@ extension XCUIApplication {
         splitScreenMode = nil
 
         // sleep for a while until stable as there's animation
-        sleep(1)
+        sleep(2)
     }
 
     /// Switches current split screen mode to another.
@@ -205,7 +205,7 @@ extension XCUIApplication {
         splitScreenMode = targetMode
 
         // sleep for a while until stable as there's animation
-        sleep(1)
+        sleep(2)
     }
 }
 
