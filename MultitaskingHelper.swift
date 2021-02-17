@@ -207,6 +207,10 @@ extension XCUIApplication {
         // sleep for a while until stable as there's animation
         sleep(2)
     }
+    
+    private func isIPad() -> Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
 }
 
 // MARK: - private helpers
