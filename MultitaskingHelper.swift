@@ -23,7 +23,7 @@ enum SplitScreenMode: Int {
     /// Our app takes more than half of the screen.
     case landscapeTwoThirds = 0
 
-    /// Our app takes less then half of the screen.
+    /// Our app takes less than half of the screen.
     case landscapeOneThird = 1
 
     /// Our app takes half of the screen.
@@ -34,7 +34,7 @@ enum SplitScreenMode: Int {
     /// Our app takes more than half of the screen.
     case portraitMajor = 3
 
-    /// Our app takes less then half of the screen.
+    /// Our app takes less than half of the screen.
     case portraitMinor = 4
 
     /// The proportion our app takes from the whole screen.
