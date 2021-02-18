@@ -207,10 +207,6 @@ extension XCUIApplication {
         // sleep for a while until stable as there's animation
         sleep(2)
     }
-    
-    private func isIPad() -> Bool {
-        return UIDevice.current.userInterfaceIdiom == .pad
-    }
 }
 
 // MARK: - private helpers
@@ -224,6 +220,11 @@ extension XCUIApplication {
 
         // press down for a small while then drag
         bottomEdgeSwipeBegin.press(forDuration: edgeSwipePressDuration, thenDragTo: bottomEdgeSwipeEnd)
+    }
+
+    /// Checks if current device is iPad.
+    private func isIPad() -> Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
     }
 }
 
