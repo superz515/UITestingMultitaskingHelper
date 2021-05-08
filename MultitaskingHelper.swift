@@ -110,6 +110,11 @@ extension XCUIApplication {
     var otherAppNormalizedOffset: CGVector {
         return CGVector(dx: 0.5, dy: 0.95)
     }
+    
+    /// The handle that is used to resize apps during multitasking
+    var splitScreenHandle: XCUIElement {
+        return XCUIApplication(bundleIdentifier: "com.apple.springboard").otherElements["SideAppDivider"].firstMatch
+    }
 
     // MARK: - public APIs
 
@@ -144,9 +149,9 @@ extension XCUIApplication {
 
         let windowWidth = windows.firstMatch.frame.width
 
-        // drag from right edge (the grab handle) by a large distance to the right
-        let dragBegin = windows.firstMatch.coordinate(withNormalizedOffset: rightEdgeNormalizedOffset)
-        let dragEnd = dragBegin.withOffset(CGVector(dx: windowWidth / current.splitFactor - windowWidth, dy: 0))
+        let dragBegin = splitScreenHandle.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+        let windowRightEdge = windows.firstMatch.coordinate(withNormalizedOffset: rightEdgeNormalizedOffset)
+        let dragEnd = windowRightEdge.withOffset(CGVector(dx: windowWidth / current.splitFactor - windowWidth, dy: 0))
         dragBegin.press(forDuration: edgeSwipePressDuration, thenDragTo: dragEnd)
 
         // clear current mode
@@ -182,9 +187,10 @@ extension XCUIApplication {
 
             let windowWidth = windows.firstMatch.frame.width
 
-            // drag from right edge (the grab handle) by certain distance to the left/right
-            dragBegin = windows.firstMatch.coordinate(withNormalizedOffset: rightEdgeNormalizedOffset)
-            dragEnd = dragBegin.withOffset(CGVector(dx: windowWidth * (next.splitFactor / current.splitFactor - 1), dy: 0))
+            // drag from the grab handle by certain distance to the left/right
+            dragBegin = splitScreenHandle.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+            let windowRightEdge = windows.firstMatch.coordinate(withNormalizedOffset: rightEdgeNormalizedOffset)
+            dragEnd = windowRightEdge.withOffset(CGVector(dx: windowWidth * (next.splitFactor / current.splitFactor - 1), dy: 0))
         } else {
             // activate initial mode from full screen
 
